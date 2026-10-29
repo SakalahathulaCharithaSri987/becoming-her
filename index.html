@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7C0E44">
+
+  <title>Becoming Her — Little habits. A whole new me.</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="app">
+
+    <!-- ============ SIDEBAR / NAVIGATION ============ -->
+
+    <aside class="sidebar" aria-label="Application sidebar">
+
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">✿</span>
+        <h1 class="brand-name">Becoming Her</h1>
+      </div>
+
+      <nav class="nav" aria-label="Main navigation">
+
+        <a href="#dashboard"
+           class="nav-link"
+           data-view="dashboard"
+           aria-current="page">
+
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"
+                 width="22"
+                 height="22"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.8"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 style="fill:none;stroke:currentColor">
+              <rect x="3" y="3" width="8" height="8" rx="2"/>
+              <rect x="14" y="3" width="7" height="5" rx="2"/>
+              <rect x="14" y="11" width="7" height="10" rx="2"/>
+              <rect x="3" y="14" width="8" height="7" rx="2"/>
+            </svg>
+          </span>
+
+          <span class="nav-label">Dashboard</span>
+        </a>
+
+        <a href="#tracker"
+           class="nav-link"
+           data-view="tracker">
+
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"
+                 width="22"
+                 height="22"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.8"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 style="fill:none;stroke:currentColor">
+              <rect x="4" y="4" width="16" height="16" rx="3"/>
+              <path d="M8 12l3 3 5-6"/>
+            </svg>
+          </span>
+
+          <span class="nav-label">Daily Tracker</span>
+        </a>
+
+        <a href="#monthly"
+           class="nav-link"
+           data-view="monthly">
+
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"
+                 width="22"
+                 height="22"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.8"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 style="fill:none;stroke:currentColor">
+              <rect x="3" y="5" width="18" height="16" rx="3"/>
+              <path d="M3 10h18M8 3v4M16 3v4"/>
+            </svg>
+          </span>
+
+          <span class="nav-label">Monthly Progress</span>
+        </a>
+
+        <a href="#settings"
+           class="nav-link"
+           data-view="settings">
+
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"
+                 width="22"
+                 height="22"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.8"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 style="fill:none;stroke:currentColor">
+              <path d="M4 7h10M18 7h2M4 17h2M10 17h10"/>
+              <circle cx="16" cy="7" r="2"/>
+              <circle cx="8" cy="17" r="2"/>
+            </svg>
+          </span>
+
+          <span class="nav-label">Settings</span>
+        </a>
+
+      </nav>
+    </aside>
+
+    <!-- ============ MAIN CONTENT ============ -->
+
+    <main id="main" class="main" tabindex="-1">
+
+      <div class="mobile-brand" aria-label="Becoming Her">
+        <span class="mobile-brand-mark" aria-hidden="true">✿</span>
+        <span class="mobile-brand-name">Becoming Her</span>
+      </div>
+
+      <div id="storageWarning"
+           class="notice"
+           role="alert"
+           hidden>
+        Your browser is blocking saved data (localStorage), so your
+        records cannot be kept after you close this page.
+        Try opening the file in a normal (non-private) browser window.
+      </div>
+
+      <!-- ============ DASHBOARD ============ -->
+
+      <section id="view-dashboard"
+               class="view"
+               aria-labelledby="dashboardTitle">
+
+        <header class="page-head">
+          <p class="tagline">Little habits. A whole new me.</p>
+          <h2 id="dashboardTitle">Dashboard</h2>
+        </header>
+
+        <div id="dashboardContent"></div>
+      </section>
+
+      <!-- ============ DAILY TRACKER ============ -->
+
+      <section id="view-tracker"
+               class="view"
+               aria-labelledby="trackerTitle"
+               hidden>
+
+        <header class="page-head">
+          <h2 id="trackerTitle">Daily Tracker</h2>
+          <p class="lead">
+            Tick, type, done. Everything saves automatically.
+          </p>
+        </header>
+
+        <div class="card day-nav">
+
+          <button type="button"
+                  id="prevDay"
+                  class="btn btn-round"
+                  aria-label="Previous personal day">‹</button>
+
+          <div class="day-nav-center">
+
+            <p id="dayTitle" class="day-title"></p>
+            <p id="dayMeta" class="muted small"></p>
+
+            <div class="date-pick">
+              <label for="dateInput" class="small">Jump to date</label>
+
+              <input type="date" id="dateInput">
+
+              <button type="button"
+                      id="todayBtn"
+                      class="btn btn-small">
+                Back to today
+              </button>
+            </div>
+
+          </div>
+
+          <button type="button"
+                  id="nextDay"
+                  class="btn btn-round"
+                  aria-label="Next personal day">›</button>
+        </div>
+
+        <div id="scheduleBox" class="card"></div>
+        <div id="dailySummary" class="card"></div>
+        <div id="habitList" class="habit-list"></div>
+
+      </section>
+
+      <!-- ============ MONTHLY PROGRESS ============ -->
+
+      <section id="view-monthly"
+               class="view"
+               aria-labelledby="monthlyTitle"
+               hidden>
+
+        <header class="page-head">
+          <h2 id="monthlyTitle">Monthly Progress</h2>
+          <p class="lead">
+            Everything here is calculated from the days you have actually saved.
+          </p>
+        </header>
+
+        <div class="card filters">
+
+          <div class="field">
+            <label for="monthSelect">Month</label>
+            <select id="monthSelect"></select>
+          </div>
+
+          <div class="field">
+            <label for="yearSelect">Year</label>
+            <select id="yearSelect"></select>
+          </div>
+
+        </div>
+
+        <div id="monthStats"></div>
+        <div id="monthCharts"></div>
+
+        <div class="card">
+
+          <h3>Calendar &amp; history</h3>
+
+          <div id="calendar"></div>
+
+          <ul class="legend" aria-label="Calendar legend">
+            <li><span class="swatch l4"></span> All 8 done</li>
+            <li><span class="swatch l3"></span> 5–7 done</li>
+            <li><span class="swatch l2"></span> 1–4 done</li>
+            <li><span class="swatch l1"></span> Some progress</li>
+            <li><span class="swatch none"></span> Nothing recorded</li>
+            <li><span class="swatch future"></span> Upcoming</li>
+          </ul>
+
+          <div id="dayDetail"
+               class="day-detail"
+               aria-live="polite"></div>
+
+        </div>
+      </section>
+
+      <!-- ============ SETTINGS ============ -->
+
+      <section id="view-settings"
+               class="view"
+               aria-labelledby="settingsTitle"
+               hidden>
+
+        <header class="page-head">
+          <h2 id="settingsTitle">Settings</h2>
+          <p class="lead">
+            Changes save automatically. Your past records are never altered by these settings.
+          </p>
+        </header>
+
+        <div class="card">
+          <h3>Your eight habits</h3>
+          <ul id="habitOverview" class="chips-list"></ul>
+        </div>
+
+        <div class="card">
+
+          <h3>Personal-day boundary</h3>
+
+          <p class="muted">
+            Your personal day does not end at midnight. Anything you
+            record before this time belongs to the
+            <strong>previous</strong> personal day — handy after a late shift.
+          </p>
+
+          <div class="field-row">
+
+            <div class="field">
+              <label for="boundaryInput">Day starts at</label>
+              <input type="time" id="boundaryInput">
+            </div>
+
+            <button type="button"
+                    id="boundaryApply"
+                    class="btn">
+              Apply boundary
+            </button>
+
+          </div>
+
+          <p id="boundaryPreview"
+             class="hint"
+             aria-live="polite"></p>
+
+          <p class="hint">
+            Changing this never moves records you already saved.
+            It only changes which date counts as “today”.
+          </p>
+        </div>
+
+        <div class="card">
+
+          <h3>Work schedule</h3>
+
+          <p class="muted">
+            Each schedule applies from its start date. If two schedules
+            cover the same day, the one that starts later is used.
+            Changing a schedule never changes your saved habits.
+          </p>
+
+          <div id="scheduleList"></div>
+
+          <p id="scheduleMsg"
+             class="hint"
+             aria-live="polite"></p>
+
+          <button type="button"
+                  id="addSchedule"
+                  class="btn btn-ghost">
+            + Add a schedule
+          </button>
+
+        </div>
+
+        <div class="card">
+
+          <h3>Skincare checklist</h3>
+
+          <p class="muted">
+            One step per line. These are your own steps — add whatever you follow.
+          </p>
+
+          <div class="field-row">
+
+            <div class="field">
+              <label for="skinAm">After waking</label>
+              <textarea id="skinAm" rows="4"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="skinPm">Before sleep</label>
+              <textarea id="skinPm" rows="4"></textarea>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card">
+
+          <h3>Weekly hair-care schedule</h3>
+
+          <p class="muted">
+            Choose what each weekday involves. Leave a day empty for a rest day.
+          </p>
+
+          <div id="hairList"></div>
+
+        </div>
+
+        <div class="card">
+
+          <h3>Backup &amp; restore</h3>
+
+          <p class="muted">
+            Your records live in this browser only (localStorage).
+            They do not sync between devices, and clearing your browser
+            data can erase them — so download a backup now and then.
+          </p>
+
+          <div class="btn-row">
+
+            <button type="button"
+                    id="exportBtn"
+                    class="btn">
+              Download backup (.json)
+            </button>
+
+            <label for="importFile"
+                   class="btn btn-ghost file-btn">
+              Restore from backup…
+            </label>
+
+            <input type="file"
+                   id="importFile"
+                   accept="application/json,.json"
+                   class="visually-hidden">
+
+          </div>
+
+          <p id="backupMsg"
+             class="hint"
+             role="status"
+             aria-live="polite"></p>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ============ SAVE STATUS ============ -->
+
+  <div id="saveStatus"
+       class="save-status"
+       role="status"
+       aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
